@@ -1,0 +1,113 @@
+.macro-circles {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  .circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 120px;    // was 70px
+    height: 140px;   // was 90px
+
+    svg {
+      width: 100px;  // was 70px
+      height: 100px; // was 70px
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+    .label {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  }
+}
+
+.radial-progress-bar {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  margin-bottom: 0.5rem;
+
+  .circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #eee;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mask,
+  .fill {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    clip: rect(0px, 70px, 70px, 35px);
+  }
+
+  .mask {
+    clip: rect(0px, 70px, 70px, 35px);
+  }
+
+  .mask.full {
+    z-index: 1;
+    background: transparent;
+  }
+
+  .mask.half {
+    z-index: 2;
+    background: transparent;
+  }
+
+  .fill {
+    z-index: 3;
+    background: #0078d4;
+    transition: transform 0.5s;
+  }
+
+  &.orange .fill { background: #ff9800; }
+  &.green .fill { background: #4caf50; }
+  &.pink .fill { background: #e91e63; }
+  &.blue .fill { background: #2196f3; }
+
+  .inside-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+
+    .value {
+      font-size: 1.1rem;
+      margin-bottom: 0.15rem;
+    }
+    .label {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .target {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  }
+}

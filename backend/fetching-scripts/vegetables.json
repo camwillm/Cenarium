@@ -1,0 +1,202 @@
+[
+    {
+        "item_id": "veg-2001",
+        "name": "Broccoli",
+        "store": "Sample Store",
+        "unit": "bunch",
+        "price": 2.99,
+        "serving_size_g": 91,
+        "nutrition": {
+            "calories": 31,
+            "protein_g": 2.5,
+            "fat_g": 0.4,
+            "carbs_g": 6,
+            "cholesterol_mg": 0,
+            "sodium_mg": 30
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.03,
+        "price_per_serving": 0.27,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2002",
+        "name": "Carrot",
+        "store": "Sample Store",
+        "unit": "bag",
+        "price": 1.99,
+        "serving_size_g": 61,
+        "nutrition": {
+            "calories": 25,
+            "protein_g": 0.6,
+            "fat_g": 0.1,
+            "carbs_g": 6,
+            "cholesterol_mg": 0,
+            "sodium_mg": 42
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.03,
+        "price_per_serving": 0.12,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2003",
+        "name": "Spinach",
+        "store": "Sample Store",
+        "unit": "bag",
+        "price": 3.49,
+        "serving_size_g": 30,
+        "nutrition": {
+            "calories": 7,
+            "protein_g": 0.9,
+            "fat_g": 0.1,
+            "carbs_g": 1,
+            "cholesterol_mg": 0,
+            "sodium_mg": 24
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.12,
+        "price_per_serving": 0.36,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2004",
+        "name": "Red Bell Pepper",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 1.49,
+        "serving_size_g": 85,
+        "nutrition": {
+            "calories": 25,
+            "protein_g": 1,
+            "fat_g": 0.2,
+            "carbs_g": 6,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.02,
+        "price_per_serving": 0.13,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2005",
+        "name": "Cauliflower",
+        "store": "Sample Store",
+        "unit": "head",
+        "price": 2.79,
+        "serving_size_g": 100,
+        "nutrition": {
+            "calories": 25,
+            "protein_g": 2,
+            "fat_g": 0.1,
+            "carbs_g": 5,
+            "cholesterol_mg": 0,
+            "sodium_mg": 30
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.03,
+        "price_per_serving": 0.28,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2006",
+        "name": "Zucchini",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 1.29,
+        "serving_size_g": 124,
+        "nutrition": {
+            "calories": 21,
+            "protein_g": 1.5,
+            "fat_g": 0.4,
+            "carbs_g": 4,
+            "cholesterol_mg": 0,
+            "sodium_mg": 14
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.01,
+        "price_per_serving": 0.16,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2007",
+        "name": "Eggplant",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 2.49,
+        "serving_size_g": 82,
+        "nutrition": {
+            "calories": 20,
+            "protein_g": 0.8,
+            "fat_g": 0.1,
+            "carbs_g": 5,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.03,
+        "price_per_serving": 0.20,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2008",
+        "name": "Green Beans",
+        "store": "Sample Store",
+        "unit": "bag",
+        "price": 2.99,
+        "serving_size_g": 125,
+        "nutrition": {
+            "calories": 35,
+            "protein_g": 2,
+            "fat_g": 0.2,
+            "carbs_g": 8,
+            "cholesterol_mg": 0,
+            "sodium_mg": 6
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.02,
+        "price_per_serving": 0.24,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2009",
+        "name": "Tomato",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 0.99,
+        "serving_size_g": 123,
+        "nutrition": {
+            "calories": 22,
+            "protein_g": 1.1,
+            "fat_g": 0.2,
+            "carbs_g": 5,
+            "cholesterol_mg": 0,
+            "sodium_mg": 6
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.01,
+        "price_per_serving": 0.12,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "veg-2010",
+        "name": "Cucumber",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 1.19,
+        "serving_size_g": 104,
+        "nutrition": {
+            "calories": 16,
+            "protein_g": 0.7,
+            "fat_g": 0.1,
+            "carbs_g": 4,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "vegetable",
+        "price_per_gram": 0.01,
+        "price_per_serving": 0.12,
+        "last_updated": "2025-07-29"
+    }
+]

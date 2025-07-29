@@ -1,0 +1,142 @@
+[
+    {
+        "item_id": "custom-2004",
+        "name": "Avocado Oil",
+        "store": "Sample Store",
+        "unit": "bottle",
+        "price": 8.49,
+        "serving_size_g": 14,
+        "nutrition": {
+            "calories": 120,
+            "protein_g": 0,
+            "fat_g": 14,
+            "carbs_g": 0,
+            "cholesterol_mg": 0,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0121,
+        "price_per_serving": 0.17,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "custom-2005",
+        "name": "Ghee",
+        "store": "Sample Store",
+        "unit": "jar",
+        "price": 6.99,
+        "serving_size_g": 13,
+        "nutrition": {
+            "calories": 115,
+            "protein_g": 0,
+            "fat_g": 13,
+            "carbs_g": 0,
+            "cholesterol_mg": 33,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0107,
+        "price_per_serving": 0.14,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "custom-2006",
+        "name": "Canola Oil",
+        "store": "Sample Store",
+        "unit": "bottle",
+        "price": 4.99,
+        "serving_size_g": 14,
+        "nutrition": {
+            "calories": 120,
+            "protein_g": 0,
+            "fat_g": 14,
+            "carbs_g": 0,
+            "cholesterol_mg": 0,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0071,
+        "price_per_serving": 0.10,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "custom-2007",
+        "name": "Lard",
+        "store": "Sample Store",
+        "unit": "container",
+        "price": 3.99,
+        "serving_size_g": 12,
+        "nutrition": {
+            "calories": 110,
+            "protein_g": 0,
+            "fat_g": 12,
+            "carbs_g": 0,
+            "cholesterol_mg": 12,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0083,
+        "price_per_serving": 0.10,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "custom-2008",
+        "name": "Vegetable Shortening",
+        "store": "Sample Store",
+        "unit": "can",
+        "price": 4.49,
+        "serving_size_g": 12,
+        "nutrition": {
+            "calories": 110,
+            "protein_g": 0,
+            "fat_g": 12,
+            "carbs_g": 0,
+            "cholesterol_mg": 0,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0075,
+        "price_per_serving": 0.09,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "custom-2009",
+        "name": "Sesame Oil",
+        "store": "Sample Store",
+        "unit": "bottle",
+        "price": 6.49,
+        "serving_size_g": 14,
+        "nutrition": {
+            "calories": 120,
+            "protein_g": 0,
+            "fat_g": 14,
+            "carbs_g": 0,
+            "cholesterol_mg": 0,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0102,
+        "price_per_serving": 0.14,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "custom-2010",
+        "name": "Duck Fat",
+        "store": "Sample Store",
+        "unit": "jar",
+        "price": 7.99,
+        "serving_size_g": 13,
+        "nutrition": {
+            "calories": 115,
+            "protein_g": 0,
+            "fat_g": 13,
+            "carbs_g": 0,
+            "cholesterol_mg": 15,
+            "sodium_mg": 0
+        },
+        "category": "fat",
+        "price_per_gram": 0.0123,
+        "price_per_serving": 0.16,
+        "last_updated": "2025-07-29"
+    }
+]

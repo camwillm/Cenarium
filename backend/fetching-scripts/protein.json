@@ -1,0 +1,202 @@
+[
+  {
+    "item_id": "custom-0001",
+    "name": "Chicken Breast",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 2.99,
+    "serving_size_g": 113,
+    "nutrition": {
+      "calories": 165,
+      "protein_g": 31,
+      "fat_g": 3.6,
+      "carbs_g": 0,
+      "cholesterol_mg": 85,
+      "sodium_mg": 74
+    },
+    "category": "protein",
+    "price_per_gram": 0.0066,
+    "price_per_serving": 0.75,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0002",
+    "name": "Ground Beef (85% lean)",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 4.49,
+    "serving_size_g": 113,
+    "nutrition": {
+      "calories": 250,
+      "protein_g": 21,
+      "fat_g": 20,
+      "carbs_g": 0,
+      "cholesterol_mg": 80,
+      "sodium_mg": 75
+    },
+    "category": "protein",
+    "price_per_gram": 0.0099,
+    "price_per_serving": 1.12,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0003",
+    "name": "Eggs",
+    "store": "Sample Store",
+    "unit": "dozen",
+    "price": 1.79,
+    "serving_size_g": 50,
+    "nutrition": {
+      "calories": 70,
+      "protein_g": 6,
+      "fat_g": 5,
+      "carbs_g": 0.6,
+      "cholesterol_mg": 185,
+      "sodium_mg": 70
+    },
+    "category": "protein",
+    "price_per_gram": 0.003,
+    "price_per_serving": 0.15,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0004",
+    "name": "Tofu (firm)",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 2.29,
+    "serving_size_g": 85,
+    "nutrition": {
+      "calories": 140,
+      "protein_g": 14,
+      "fat_g": 8,
+      "carbs_g": 3,
+      "cholesterol_mg": 0,
+      "sodium_mg": 15
+    },
+    "category": "protein",
+    "price_per_gram": 0.005,
+    "price_per_serving": 0.42,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0005",
+    "name": "Salmon (fillet)",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 9.99,
+    "serving_size_g": 113,
+    "nutrition": {
+      "calories": 206,
+      "protein_g": 22,
+      "fat_g": 12,
+      "carbs_g": 0,
+      "cholesterol_mg": 63,
+      "sodium_mg": 55
+    },
+    "category": "protein",
+    "price_per_gram": 0.022,
+    "price_per_serving": 2.49,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0006",
+    "name": "Canned Tuna (in water)",
+    "store": "Sample Store",
+    "unit": "can (5 oz)",
+    "price": 1.19,
+    "serving_size_g": 85,
+    "nutrition": {
+      "calories": 100,
+      "protein_g": 22,
+      "fat_g": 1,
+      "carbs_g": 0,
+      "cholesterol_mg": 30,
+      "sodium_mg": 300
+    },
+    "category": "protein",
+    "price_per_gram": 0.014,
+    "price_per_serving": 1.19,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0007",
+    "name": "Turkey Breast (deli slices)",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 6.49,
+    "serving_size_g": 56,
+    "nutrition": {
+      "calories": 60,
+      "protein_g": 10,
+      "fat_g": 1.5,
+      "carbs_g": 1,
+      "cholesterol_mg": 25,
+      "sodium_mg": 520
+    },
+    "category": "protein",
+    "price_per_gram": 0.0143,
+    "price_per_serving": 0.8,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0008",
+    "name": "Tempeh",
+    "store": "Sample Store",
+    "unit": "8 oz",
+    "price": 3.29,
+    "serving_size_g": 85,
+    "nutrition": {
+      "calories": 195,
+      "protein_g": 19,
+      "fat_g": 11,
+      "carbs_g": 9,
+      "cholesterol_mg": 0,
+      "sodium_mg": 10
+    },
+    "category": "protein",
+    "price_per_gram": 0.0145,
+    "price_per_serving": 1.23,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0009",
+    "name": "Pork Chops (bone-in)",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 3.49,
+    "serving_size_g": 113,
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 22,
+      "fat_g": 16,
+      "carbs_g": 0,
+      "cholesterol_mg": 75,
+      "sodium_mg": 60
+    },
+    "category": "protein",
+    "price_per_gram": 0.0077,
+    "price_per_serving": 0.87,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-0010",
+    "name": "Seitan",
+    "store": "Sample Store",
+    "unit": "8 oz",
+    "price": 4.59,
+    "serving_size_g": 85,
+    "nutrition": {
+      "calories": 130,
+      "protein_g": 21,
+      "fat_g": 2,
+      "carbs_g": 6,
+      "cholesterol_mg": 0,
+      "sodium_mg": 300
+    },
+    "category": "protein",
+    "price_per_gram": 0.0202,
+    "price_per_serving": 1.72,
+    "last_updated": "2025-07-29"
+  }
+]

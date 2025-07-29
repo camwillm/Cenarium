@@ -1,0 +1,202 @@
+[
+    {
+        "item_id": "fruit-1001",
+        "name": "Apple",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 0.99,
+        "serving_size_g": 182,
+        "nutrition": {
+            "calories": 95,
+            "protein_g": 0.5,
+            "fat_g": 0.3,
+            "carbs_g": 25,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0054,
+        "price_per_serving": 0.99,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1002",
+        "name": "Banana",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 0.59,
+        "serving_size_g": 118,
+        "nutrition": {
+            "calories": 105,
+            "protein_g": 1.3,
+            "fat_g": 0.3,
+            "carbs_g": 27,
+            "cholesterol_mg": 0,
+            "sodium_mg": 1
+        },
+        "category": "fruit",
+        "price_per_gram": 0.005,
+        "price_per_serving": 0.59,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1003",
+        "name": "Orange",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 0.79,
+        "serving_size_g": 131,
+        "nutrition": {
+            "calories": 62,
+            "protein_g": 1.2,
+            "fat_g": 0.2,
+            "carbs_g": 15.4,
+            "cholesterol_mg": 0,
+            "sodium_mg": 0
+        },
+        "category": "fruit",
+        "price_per_gram": 0.006,
+        "price_per_serving": 0.79,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1004",
+        "name": "Strawberry",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 2.99,
+        "serving_size_g": 152,
+        "nutrition": {
+            "calories": 49,
+            "protein_g": 1,
+            "fat_g": 0.5,
+            "carbs_g": 12,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0197,
+        "price_per_serving": 2.99,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1005",
+        "name": "Blueberry",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 3.49,
+        "serving_size_g": 148,
+        "nutrition": {
+            "calories": 84,
+            "protein_g": 1.1,
+            "fat_g": 0.5,
+            "carbs_g": 21.4,
+            "cholesterol_mg": 0,
+            "sodium_mg": 1
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0236,
+        "price_per_serving": 3.49,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1006",
+        "name": "Grapes",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 2.49,
+        "serving_size_g": 151,
+        "nutrition": {
+            "calories": 104,
+            "protein_g": 1.1,
+            "fat_g": 0.2,
+            "carbs_g": 27.3,
+            "cholesterol_mg": 0,
+            "sodium_mg": 3
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0165,
+        "price_per_serving": 2.49,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1007",
+        "name": "Watermelon",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 0.99,
+        "serving_size_g": 152,
+        "nutrition": {
+            "calories": 46,
+            "protein_g": 0.9,
+            "fat_g": 0.2,
+            "carbs_g": 11.6,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0065,
+        "price_per_serving": 0.99,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1008",
+        "name": "Pineapple",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 1.29,
+        "serving_size_g": 165,
+        "nutrition": {
+            "calories": 82,
+            "protein_g": 0.9,
+            "fat_g": 0.2,
+            "carbs_g": 21.6,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0078,
+        "price_per_serving": 1.29,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1009",
+        "name": "Kiwi",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 0.69,
+        "serving_size_g": 76,
+        "nutrition": {
+            "calories": 42,
+            "protein_g": 0.8,
+            "fat_g": 0.4,
+            "carbs_g": 10.1,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0091,
+        "price_per_serving": 0.69,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "fruit-1010",
+        "name": "Pear",
+        "store": "Sample Store",
+        "unit": "each",
+        "price": 1.09,
+        "serving_size_g": 178,
+        "nutrition": {
+            "calories": 101,
+            "protein_g": 0.6,
+            "fat_g": 0.2,
+            "carbs_g": 27,
+            "cholesterol_mg": 0,
+            "sodium_mg": 2
+        },
+        "category": "fruit",
+        "price_per_gram": 0.0061,
+        "price_per_serving": 1.09,
+        "last_updated": "2025-07-29"
+    }
+]

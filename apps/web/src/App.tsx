@@ -1,27 +1,46 @@
-export default function App() {
-  return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center px-4 py-12">
-      <section className="bg-gray-900 border border-gray-700 rounded-xl shadow-xl p-8 max-w-xl text-center">
-        <h1 className="text-5xl font-extrabold text-blue-400 mb-6 tracking-tight">
-          Welcome to Cenarium
-        </h1>
-        <p className="text-lg text-gray-300 leading-relaxed">
-          Plan smarter. Eat better. Track your meals and macros with real-time grocery costs and nutritional insights.
-        </p>
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import MacroCalculator from "./components/MacroCalculator";
+import AIMealSuggester from "./components/AIMealSuggester";
+import Home from "./ppages/Home"; // Import your Home page
+import About from "./ppages/About";
+import Signup from "./ppages/Signup";
+import Profile from "./ppages/Profile";
 
-        <Button label="Get Started" onClick={() => alert("Tailwind is working!")} />
+export default function App() {
+  const navigate = useNavigate();
+  return (
+    <main className="landing-bg">
+      <section className="landing-card">
+        <h1 className="landing-title">Welcome to Cenarium</h1>
+        <p className="landing-desc">
+          Plan smarter. Eat better.<br />
+          Track your meals and macros with real-time grocery costs and nutritional insights.
+        </p>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "2rem" }}>
+          <button className="landing-btn" onClick={() => navigate("/signup")}>
+            Get Started
+          </button>
+          <button className="landing-btn" onClick={() => navigate("/about")}>
+            About
+          </button>
+        </div>
       </section>
     </main>
   );
 }
 
-function Button({ label, onClick }: { label: string; onClick?: () => void }) {
+export function Root() {
   return (
-    <button
-      onClick={onClick}
-      className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white shadow-md transition duration-300"
-    >
-      {label}
-    </button>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/calculator" element={<MacroCalculator />} />
+        <Route path="/suggest-meal" element={<AIMealSuggester />} />
+      </Routes>
+    </Router>
   );
 }

@@ -1,0 +1,202 @@
+[
+    {
+        "item_id": "dairy-1001",
+        "name": "Whole Milk",
+        "store": "Sample Store",
+        "unit": "liter",
+        "price": 1.99,
+        "serving_size_g": 240,
+        "nutrition": {
+            "calories": 150,
+            "protein_g": 8,
+            "fat_g": 8,
+            "carbs_g": 12,
+            "cholesterol_mg": 35,
+            "sodium_mg": 120
+        },
+        "category": "dairy",
+        "price_per_gram": 0.0083,
+        "price_per_serving": 0.48,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1002",
+        "name": "Cheddar Cheese",
+        "store": "Sample Store",
+        "unit": "block",
+        "price": 4.49,
+        "serving_size_g": 28,
+        "nutrition": {
+            "calories": 110,
+            "protein_g": 7,
+            "fat_g": 9,
+            "carbs_g": 1,
+            "cholesterol_mg": 30,
+            "sodium_mg": 180
+        },
+        "category": "dairy",
+        "price_per_gram": 0.16,
+        "price_per_serving": 0.45,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1003",
+        "name": "Greek Yogurt",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 1.29,
+        "serving_size_g": 150,
+        "nutrition": {
+            "calories": 100,
+            "protein_g": 10,
+            "fat_g": 0,
+            "carbs_g": 7,
+            "cholesterol_mg": 5,
+            "sodium_mg": 55
+        },
+        "category": "dairy",
+        "price_per_gram": 0.0086,
+        "price_per_serving": 0.19,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1004",
+        "name": "Butter",
+        "store": "Sample Store",
+        "unit": "stick",
+        "price": 2.49,
+        "serving_size_g": 14,
+        "nutrition": {
+            "calories": 100,
+            "protein_g": 0,
+            "fat_g": 11,
+            "carbs_g": 0,
+            "cholesterol_mg": 30,
+            "sodium_mg": 90
+        },
+        "category": "dairy",
+        "price_per_gram": 0.18,
+        "price_per_serving": 0.35,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1005",
+        "name": "Cottage Cheese",
+        "store": "Sample Store",
+        "unit": "cup",
+        "price": 2.19,
+        "serving_size_g": 210,
+        "nutrition": {
+            "calories": 180,
+            "protein_g": 24,
+            "fat_g": 5,
+            "carbs_g": 8,
+            "cholesterol_mg": 20,
+            "sodium_mg": 820
+        },
+        "category": "dairy",
+        "price_per_gram": 0.0104,
+        "price_per_serving": 0.46,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1006",
+        "name": "Cream Cheese",
+        "store": "Sample Store",
+        "unit": "package",
+        "price": 2.99,
+        "serving_size_g": 28,
+        "nutrition": {
+            "calories": 100,
+            "protein_g": 2,
+            "fat_g": 10,
+            "carbs_g": 1,
+            "cholesterol_mg": 30,
+            "sodium_mg": 95
+        },
+        "category": "dairy",
+        "price_per_gram": 0.11,
+        "price_per_serving": 0.33,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1007",
+        "name": "Swiss Cheese",
+        "store": "Sample Store",
+        "unit": "slice",
+        "price": 3.49,
+        "serving_size_g": 28,
+        "nutrition": {
+            "calories": 110,
+            "protein_g": 8,
+            "fat_g": 8,
+            "carbs_g": 1,
+            "cholesterol_mg": 25,
+            "sodium_mg": 54
+        },
+        "category": "dairy",
+        "price_per_gram": 0.12,
+        "price_per_serving": 0.42,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1008",
+        "name": "Sour Cream",
+        "store": "Sample Store",
+        "unit": "container",
+        "price": 1.99,
+        "serving_size_g": 30,
+        "nutrition": {
+            "calories": 60,
+            "protein_g": 1,
+            "fat_g": 5,
+            "carbs_g": 2,
+            "cholesterol_mg": 20,
+            "sodium_mg": 15
+        },
+        "category": "dairy",
+        "price_per_gram": 0.066,
+        "price_per_serving": 0.20,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1009",
+        "name": "Skim Milk",
+        "store": "Sample Store",
+        "unit": "liter",
+        "price": 1.89,
+        "serving_size_g": 240,
+        "nutrition": {
+            "calories": 80,
+            "protein_g": 8,
+            "fat_g": 0,
+            "carbs_g": 12,
+            "cholesterol_mg": 5,
+            "sodium_mg": 130
+        },
+        "category": "dairy",
+        "price_per_gram": 0.0079,
+        "price_per_serving": 0.38,
+        "last_updated": "2025-07-29"
+    },
+    {
+        "item_id": "dairy-1010",
+        "name": "Yogurt Drink",
+        "store": "Sample Store",
+        "unit": "bottle",
+        "price": 1.59,
+        "serving_size_g": 200,
+        "nutrition": {
+            "calories": 120,
+            "protein_g": 6,
+            "fat_g": 3,
+            "carbs_g": 16,
+            "cholesterol_mg": 10,
+            "sodium_mg": 90
+        },
+        "category": "dairy",
+        "price_per_gram": 0.0080,
+        "price_per_serving": 0.32,
+        "last_updated": "2025-07-29"
+    }
+]

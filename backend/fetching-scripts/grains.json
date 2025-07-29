@@ -1,0 +1,202 @@
+[
+  {
+    "item_id": "custom-1001",
+    "name": "Brown Rice",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 2.09,
+    "serving_size_g": 45,
+    "nutrition": {
+      "calories": 160,
+      "protein_g": 3.5,
+      "fat_g": 1.2,
+      "carbs_g": 34,
+      "cholesterol_mg": 0,
+      "sodium_mg": 0
+    },
+    "category": "grain",
+    "price_per_gram": 0.0046,
+    "price_per_serving": 0.21,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1002",
+    "name": "White Rice",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 1.79,
+    "serving_size_g": 45,
+    "nutrition": {
+      "calories": 150,
+      "protein_g": 3,
+      "fat_g": 0.3,
+      "carbs_g": 33,
+      "cholesterol_mg": 0,
+      "sodium_mg": 0
+    },
+    "category": "grain",
+    "price_per_gram": 0.0039,
+    "price_per_serving": 0.18,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1003",
+    "name": "Rolled Oats",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 3.29,
+    "serving_size_g": 40,
+    "nutrition": {
+      "calories": 150,
+      "protein_g": 5,
+      "fat_g": 3,
+      "carbs_g": 27,
+      "cholesterol_mg": 0,
+      "sodium_mg": 0
+    },
+    "category": "grain",
+    "price_per_gram": 0.0073,
+    "price_per_serving": 0.29,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1004",
+    "name": "Quinoa",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 4.49,
+    "serving_size_g": 43,
+    "nutrition": {
+      "calories": 160,
+      "protein_g": 6,
+      "fat_g": 2.5,
+      "carbs_g": 29,
+      "cholesterol_mg": 0,
+      "sodium_mg": 7
+    },
+    "category": "grain",
+    "price_per_gram": 0.0099,
+    "price_per_serving": 0.43,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1005",
+    "name": "Whole Wheat Bread",
+    "store": "Sample Store",
+    "unit": "loaf",
+    "price": 2.99,
+    "serving_size_g": 38,
+    "nutrition": {
+      "calories": 100,
+      "protein_g": 4,
+      "fat_g": 1,
+      "carbs_g": 18,
+      "cholesterol_mg": 0,
+      "sodium_mg": 170
+    },
+    "category": "grain",
+    "price_per_gram": 0.0032,
+    "price_per_serving": 0.12,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1006",
+    "name": "White Bread",
+    "store": "Sample Store",
+    "unit": "loaf",
+    "price": 2.59,
+    "serving_size_g": 37,
+    "nutrition": {
+      "calories": 90,
+      "protein_g": 3,
+      "fat_g": 1,
+      "carbs_g": 17,
+      "cholesterol_mg": 0,
+      "sodium_mg": 160
+    },
+    "category": "grain",
+    "price_per_gram": 0.0028,
+    "price_per_serving": 0.10,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1007",
+    "name": "Couscous",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 3.19,
+    "serving_size_g": 43,
+    "nutrition": {
+      "calories": 150,
+      "protein_g": 5,
+      "fat_g": 0.5,
+      "carbs_g": 30,
+      "cholesterol_mg": 0,
+      "sodium_mg": 5
+    },
+    "category": "grain",
+    "price_per_gram": 0.007,
+    "price_per_serving": 0.30,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1008",
+    "name": "Chickpea Pasta",
+    "store": "Sample Store",
+    "unit": "box",
+    "price": 3.49,
+    "serving_size_g": 56,
+    "nutrition": {
+      "calories": 190,
+      "protein_g": 13,
+      "fat_g": 3.5,
+      "carbs_g": 32,
+      "cholesterol_mg": 0,
+      "sodium_mg": 10
+    },
+    "category": "grain",
+    "price_per_gram": 0.0062,
+    "price_per_serving": 0.35,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1009",
+    "name": "Whole Wheat Pasta",
+    "store": "Sample Store",
+    "unit": "lb",
+    "price": 2.49,
+    "serving_size_g": 56,
+    "nutrition": {
+      "calories": 200,
+      "protein_g": 7,
+      "fat_g": 1.5,
+      "carbs_g": 41,
+      "cholesterol_mg": 0,
+      "sodium_mg": 0
+    },
+    "category": "grain",
+    "price_per_gram": 0.0055,
+    "price_per_serving": 0.28,
+    "last_updated": "2025-07-29"
+  },
+  {
+    "item_id": "custom-1010",
+    "name": "Tortillas (whole wheat)",
+    "store": "Sample Store",
+    "unit": "pack",
+    "price": 2.79,
+    "serving_size_g": 50,
+    "nutrition": {
+      "calories": 130,
+      "protein_g": 4,
+      "fat_g": 3,
+      "carbs_g": 22,
+      "cholesterol_mg": 0,
+      "sodium_mg": 180
+    },
+    "category": "grain",
+    "price_per_gram": 0.0056,
+    "price_per_serving": 0.28,
+    "last_updated": "2025-07-29"
+  }
+]
