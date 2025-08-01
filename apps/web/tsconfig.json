@@ -1,7 +1,16 @@
-"baseUrl": "apps/web/src",
-"paths": {
-  "@components/*": ["components/*"],
-  "@pages/*": ["pages/*"],
-  "@utils/*": ["utils/*"],
-  "@entities/*": ["entities/*"]
+{
+  "compilerOptions": {
+    "baseUrl": "apps/web/src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@entities/*": ["entities/*"]
+    },
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  }
 }
