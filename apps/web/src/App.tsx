@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "@/components/Layout";
-import { createPageUrl } from "@/utils";
+import Layout from "@/components/Layouts";
+import { createPageUrl } from "@/utils/createPageUrl";
+
 
 
 
