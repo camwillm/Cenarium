@@ -2,10 +2,11 @@
   "compilerOptions": {
     "baseUrl": "apps/web/src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@utils/*": ["utils/*"],
-      "@entities/*": ["entities/*"]
+  "@/*": ["*"],
+  "@components/*": ["components/*"],
+  "@pages/*": ["pages/*"],
+  "@utils/*": ["utils/*"],
+  "@entities/*": ["entities/*"]
     },
     "jsx": "react-jsx",
     "module": "ESNext",

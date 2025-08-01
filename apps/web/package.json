@@ -12,12 +12,14 @@
     "test": "react-scripts test"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.535.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.7.1"
+    "react-router-dom": "^7.7.1",
+    "sonner": "^2.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

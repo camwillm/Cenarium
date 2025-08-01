@@ -5,10 +5,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "../../components/ui/table";
+
+
+import { Card } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
+import { Skeleton } from "../../components/ui/skeleton";
+
+
 import { TrendingUp, DollarSign } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 

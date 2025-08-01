@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { createPageUrl } from "@/utils";
-import { User } from "@/entities/User";
-import { MealPlan } from "@/entities/MealPlan";
+
+import { createPageUrl } from "../utils/createPageUrl";
+import { User } from "../entities/User";
+import { MealPlan } from "../entities/MealPlan";
+
 import { format } from "date-fns";
 import {
   Calculator,
@@ -11,8 +13,9 @@ import {
   Calendar,
   User as UserIcon,
   Target,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
+
 import {
   Sidebar,
   SidebarContent,
@@ -24,8 +27,10 @@ import {
   SidebarHeader,
   SidebarFooter,
   SidebarProvider,
-  SidebarTrigger
-} from "@/components/ui/sidebar";
+  SidebarTrigger,
+} from "../components/ui/sidebar";
+
+
 
 const navigationItems = [
   { title: "Dashboard", url: createPageUrl("Dashboard"), icon: LayoutDashboard, gradient: "from-emerald-500 to-teal-600" },
