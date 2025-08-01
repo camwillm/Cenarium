@@ -2,16 +2,19 @@
   "compilerOptions": {
     "baseUrl": "apps/web/src",
     "paths": {
-  "@/*": ["*"],
-  "@components/*": ["components/*"],
-  "@pages/*": ["pages/*"],
-  "@utils/*": ["utils/*"],
-  "@entities/*": ["entities/*"]
+      "@/*": ["*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@entities/*": ["entities/*"]
     },
     "jsx": "react-jsx",
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["react", "react-dom"]
+  },
+  "include": ["apps/web/src"]
 }
