@@ -1,45 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import MacroCalculator from "./components/MacroCalculator";
-import AIMealSuggester from "./components/AIMealSuggester";
-import Home from "./ppages/Home"; // Import your Home page
-import About from "./ppages/About";
-import Signup from "./ppages/Signup";
-import Profile from "./ppages/Profile";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "@/components/Layout";
+import { createPageUrl } from "@/utils";
 
-export default function App() {
-  const navigate = useNavigate();
-  return (
-    <main className="landing-bg">
-      <section className="landing-card">
-        <h1 className="landing-title">Welcome to Cenarium</h1>
-        <p className="landing-desc">
-          Plan smarter. Eat better.<br />
-          Track your meals and macros with real-time grocery costs and nutritional insights.
-        </p>
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "2rem" }}>
-          <button className="landing-btn" onClick={() => navigate("/signup")}>
-            Get Started
-          </button>
-          <button className="landing-btn" onClick={() => navigate("/about")}>
-            About
-          </button>
-        </div>
-      </section>
-    </main>
-  );
+
+
+function WrappedRoute({ element, title }: { element: JSX.Element; title: string }) {
+  return <Layout currentPageName={title}>{element}</Layout>;
 }
 
-export function Root() {
+export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/calculator" element={<MacroCalculator />} />
-        <Route path="/suggest-meal" element={<AIMealSuggester />} />
+        {/* Landing page - no layout */}
+        <Route path="/" element={<Landing />} />
+
+        {/* Layout-wrapped routes */}
+        <Route path={createPageUrl("Home")} element={<WrappedRoute title="Home" element={<Home />} />} />
+        <Route path={createPageUrl("About")} element={<WrappedRoute title="About" element={<About />} />} />
+        <Route path={createPageUrl("Signup")} element={<WrappedRoute title="Signup" element={<Signup />} />} />
+        <Route path={createPageUrl("Profile")} element={<WrappedRoute title="Profile" element={<Profile />} />} />
+        <Route path={createPageUrl("Calculator")} element={<WrappedRoute title="Calculator" element={<MacroCalculator />} />} />
+        <Route path={createPageUrl("SuggestMeal")} element={<WrappedRoute title="SuggestMeal" element={<AIMealSuggester />} />} />
       </Routes>
     </Router>
   );
