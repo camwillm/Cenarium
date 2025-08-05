@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Table,
   TableBody,
@@ -6,18 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-
-
 import { Card } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { Skeleton } from "../../components/ui/skeleton";
-
-
 import { TrendingUp, DollarSign } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 📘 Category Color Mapping
-const categoryColors: Record<string, string> = {
+const categoryColors = {
   protein: "bg-blue-100 text-blue-800 border-blue-200",
   carbs: "bg-amber-100 text-amber-800 border-amber-200",
   vegetables: "bg-green-100 text-green-800 border-green-200",
@@ -26,42 +22,25 @@ const categoryColors: Record<string, string> = {
   default: "bg-gray-100 text-gray-800 border-gray-200"
 };
 
-// 🔢 Efficiency Color Logic
-const getEfficiencyColor = (score: number): string => {
+const getEfficiencyColor = (score) => {
   if (score > 10) return "text-emerald-600";
   if (score > 5) return "text-blue-600";
   if (score > 2) return "text-amber-600";
   return "text-slate-500";
 };
 
-// 🍱 Food Item Interface
-interface FoodItem {
-  id: string | number;
-  name: string;
-  category: string;
-  calories_per_100g: number;
-  protein_per_100g: number;
-  fiber_per_100g?: number;
-  price_per_unit: number;
-  unit_weight: number;
-}
+export default function FoodTable({ foods, isLoading }) {
 
-// 📦 Props Interface
-interface FoodTableProps {
-  foods: FoodItem[];
-  isLoading: boolean;
-}
-
-export default function FoodTable({ foods, isLoading }: FoodTableProps) {
-  const calculateMetrics = (food: FoodItem) => {
+  const calculateMetrics = (food) => {
     const pricePer100g = (food.price_per_unit / food.unit_weight) * 100;
-
+    
+    // Efficiency Score: (Grams of Protein * 2 + Grams of Fiber) / Price per 100g
+    // This prioritizes protein and fiber for cost.
     let efficiencyScore = 0;
     if (pricePer100g > 0) {
-      efficiencyScore =
-        ((food.protein_per_100g * 2) + (food.fiber_per_100g ?? 0)) / pricePer100g;
+      efficiencyScore = ((food.protein_per_100g * 2) + (food.fiber_per_100g || 0)) / pricePer100g;
     }
-
+    
     return {
       pricePer100g: isNaN(pricePer100g) ? 0 : pricePer100g,
       efficiencyScore: isNaN(efficiencyScore) ? 0 : efficiencyScore,
@@ -96,7 +75,7 @@ export default function FoodTable({ foods, isLoading }: FoodTableProps) {
           </TableHeader>
           <TableBody>
             <AnimatePresence>
-              {foods.map((food) => {
+              {foods.map(food => {
                 const { pricePer100g, efficiencyScore } = calculateMetrics(food);
                 return (
                   <motion.tr
@@ -117,7 +96,7 @@ export default function FoodTable({ foods, isLoading }: FoodTableProps) {
                     <TableCell className="text-right font-medium text-slate-700">{food.protein_per_100g}g</TableCell>
                     <TableCell className="text-right">
                       <div className="flex items-center justify-end gap-1 font-medium text-slate-700">
-                        <DollarSign className="w-3 h-3 text-slate-400" />
+                        <DollarSign className="w-3 h-3 text-slate-400"/>
                         {pricePer100g.toFixed(2)}
                       </div>
                     </TableCell>

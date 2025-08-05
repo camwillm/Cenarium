@@ -1,46 +1,32 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
 import { Clock, DollarSign, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
 
-type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
-
-interface Meal {
-  id: string | number;
-  meal_type: MealType;
-  created_date: string;
-  total_calories?: number;
-  total_cost?: number;
-  total_protein?: number;
-  total_carbs?: number;
-  total_fat?: number;
-  efficiency_score?: number;
-}
-
-interface RecentMealsProps {
-  meals: Meal[];
-}
-
-const mealTypeColors: Record<MealType, string> = {
+const mealTypeColors = {
   breakfast: "bg-amber-100 text-amber-800 border-amber-200",
   lunch: "bg-blue-100 text-blue-800 border-blue-200",
   dinner: "bg-purple-100 text-purple-800 border-purple-200",
   snack: "bg-green-100 text-green-800 border-green-200"
 };
 
-const mealTypeEmojis: Record<MealType, string> = {
+const mealTypeEmojis = {
   breakfast: "🌅",
   lunch: "☀️",
   dinner: "🌙",
   snack: "🥨"
 };
 
-export default function RecentMeals({ meals }: RecentMealsProps) {
+export default function RecentMeals({ meals }) {
   if (meals.length === 0) {
     return (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
         <Card className="glass-effect border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-slate-900">
@@ -63,7 +49,11 @@ export default function RecentMeals({ meals }: RecentMealsProps) {
   }
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+    >
       <Card className="glass-effect border-0 shadow-xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-900">
@@ -87,8 +77,13 @@ export default function RecentMeals({ meals }: RecentMealsProps) {
                       <span className="text-2xl">{mealTypeEmojis[meal.meal_type]}</span>
                       <div>
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-semibold text-slate-900 capitalize">{meal.meal_type}</h3>
-                          <Badge variant="secondary" className={`${mealTypeColors[meal.meal_type]} text-xs`}>
+                          <h3 className="font-semibold text-slate-900 capitalize">
+                            {meal.meal_type}
+                          </h3>
+                          <Badge 
+                            variant="secondary" 
+                            className={`${mealTypeColors[meal.meal_type]} text-xs`}
+                          >
                             {meal.meal_type}
                           </Badge>
                         </div>
@@ -97,7 +92,7 @@ export default function RecentMeals({ meals }: RecentMealsProps) {
                         </p>
                       </div>
                     </div>
-
+                    
                     <div className="text-right">
                       <div className="flex items-center gap-4 text-sm">
                         <div className="flex items-center gap-1 text-emerald-600">
@@ -111,12 +106,12 @@ export default function RecentMeals({ meals }: RecentMealsProps) {
                       </div>
                     </div>
                   </div>
-
+                  
                   <div className="flex items-center gap-6 text-xs text-slate-500">
                     <span>P: {Math.round(meal.total_protein || 0)}g</span>
                     <span>C: {Math.round(meal.total_carbs || 0)}g</span>
                     <span>F: {Math.round(meal.total_fat || 0)}g</span>
-                    {meal.efficiency_score !== undefined && (
+                    {meal.efficiency_score && (
                       <span className="text-emerald-600 font-medium">
                         Efficiency: {meal.efficiency_score.toFixed(1)}
                       </span>

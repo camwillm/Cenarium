@@ -1,26 +1,11 @@
-import { Input } from "../components/ui/input";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/select";
-
+import React from 'react';
+import { Input } from "../../components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
 import { Search as SearchIcon } from "lucide-react";
 
-const categories = [
-  "all", "protein", "carbs", "vegetables", "fruits", "dairy",
-  "grains", "snacks", "beverages", "condiments", "other"
-];
+const categories = ["all", "protein", "carbs", "vegetables", "fruits", "dairy", "grains", "snacks", "beverages", "condiments", "other"];
 
-interface FoodSearchProps {
-  onSearch: (query: string) => void;
-  onFilter: (category: string) => void;
-}
-
-export default function FoodSearch({ onSearch, onFilter }: FoodSearchProps) {
+export default function FoodSearch({ onSearch, onFilter }) {
   return (
     <div className="flex flex-col md:flex-row gap-4">
       <div className="relative flex-1">

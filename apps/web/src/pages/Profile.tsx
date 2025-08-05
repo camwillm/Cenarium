@@ -1,29 +1,46 @@
-import { useState, useEffect } from "react";
-import { User } from "@/entities/User";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { User as UserIcon, Save, Activity, Target } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { User } from "../api/entities";
+import { Card, CardContent, CardHeader, CardTitle } from ../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import { User as UserIcon, Save, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { createPageUrl } from "@/utils";
-import { Toaster, toast } from 'sonner';
+import { createPageUrl } from "../utils";
+import { Toaster, toast } from "sonner";
+
+// Types
+type Gender = "male" | "female" | "other";
+type ActivityLevel = "sedentary" | "lightly_active" | "moderately_active" | "very_active" | "extra_active";
+type Goal = "cutting" | "maintenance" | "bulking";
+
+interface FormData {
+  age: string;
+  weight: string;
+  height: string;
+  gender: Gender | "";
+  activity_level: ActivityLevel | "";
+  goal: Goal | "";
+  weekly_budget: string;
+}
 
 export default function ProfilePage() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    age: '',
-    weight: '',
-    height: '',
-    gender: '',
-    activity_level: '',
-    goal: '',
-    weekly_budget: ''
+
+  const [formData, setFormData] = useState<FormData>({
+    age: "",
+    weight: "",
+    height: "",
+    gender: "",
+    activity_level: "",
+    goal: "",
+    weekly_budget: ""
   });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
 
   useEffect(() => {
     loadUserData();
@@ -33,23 +50,24 @@ export default function ProfilePage() {
     try {
       const userData = await User.me();
       setFormData({
-        age: userData.age || '',
-        weight: userData.weight || '',
-        height: userData.height || '',
-        gender: userData.gender || '',
-        activity_level: userData.activity_level || '',
-        goal: userData.goal || '',
-        weekly_budget: userData.weekly_budget || ''
+        age: userData.age ?? "",
+        weight: userData.weight ?? "",
+        height: userData.height ?? "",
+        gender: userData.gender ?? "",
+        activity_level: userData.activity_level ?? "",
+        goal: userData.goal ?? "",
+        weekly_budget: userData.weekly_budget ?? ""
       });
     } catch (error) {
       console.error("Error loading user data:", error);
       toast.error("Failed to load user data.");
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({
+  const handleInputChange = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({
       ...prev,
       [field]: value
     }));
@@ -57,50 +75,59 @@ export default function ProfilePage() {
 
   const calculateAndSaveChanges = async () => {
     const { age, weight, height, gender, activity_level, goal } = formData;
-    
+
     if (!age || !weight || !height || !gender || !activity_level || !goal) {
       toast.error("Please fill in all fields to save your profile.");
       return;
     }
 
     setIsSaving(true);
-    
+
     // BMR Calculation (Mifflin-St Jeor)
-    let bmr;
-    if (gender === 'male') {
-      bmr = (10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * parseFloat(age)) + 5;
+    const w = parseFloat(weight);
+    const h = parseFloat(height);
+    const a = parseFloat(age);
+    let bmr: number;
+
+    if (gender === "male") {
+      bmr = 10 * w + 6.25 * h - 5 * a + 5;
     } else {
-      bmr = (10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * parseFloat(age)) - 161;
+      bmr = 10 * w + 6.25 * h - 5 * a - 161;
     }
 
     // TDEE Calculation
-    const activityMultipliers = {
+    const activityMultipliers: Record<ActivityLevel, number> = {
       sedentary: 1.2,
       lightly_active: 1.375,
       moderately_active: 1.55,
       very_active: 1.725,
       extra_active: 1.9
     };
+
     const tdee = bmr * activityMultipliers[activity_level];
 
-    // Calorie targets based on goal
-    let calories;
+    // Calorie and macro calculations
+    let calories: number;
     switch (goal) {
-      case 'cutting': calories = tdee - 500; break;
-      case 'bulking': calories = tdee + 300; break;
-      default: calories = tdee;
+      case "cutting":
+        calories = tdee - 500;
+        break;
+      case "bulking":
+        calories = tdee + 300;
+        break;
+      default:
+        calories = tdee;
     }
 
-    // Macro targets
-    const protein = parseFloat(weight) * 2.2;
-    const fat = calories * 0.25 / 9;
-    const carbs = (calories - (protein * 4) - (fat * 9)) / 4;
+    const protein = w * 2.2;
+    const fat = (calories * 0.25) / 9;
+    const carbs = (calories - protein * 4 - fat * 9) / 4;
 
     const updatedData = {
       ...formData,
-      age: parseInt(formData.age),
-      weight: parseFloat(formData.weight),
-      height: parseFloat(formData.height),
+      age: parseInt(age),
+      weight: w,
+      height: h,
       weekly_budget: parseFloat(formData.weekly_budget) || 0,
       target_calories: Math.round(calories),
       target_protein: Math.round(protein),
@@ -111,7 +138,6 @@ export default function ProfilePage() {
     try {
       await User.updateMyUserData(updatedData);
       toast.success("Profile updated successfully!");
-      // Adding a small delay before navigating to allow user to see the toast.
       setTimeout(() => navigate(createPageUrl("Dashboard")), 1000);
     } catch (error) {
       console.error("Error saving profile:", error);
@@ -138,27 +164,17 @@ export default function ProfilePage() {
       <Toaster richColors position="top-right" />
       <div className="p-4 md:p-8 min-h-screen">
         <div className="max-w-4xl mx-auto space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
             <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
               <UserIcon className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Your Profile
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Your Profile</h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Keep your information up to date to get the most accurate recommendations.
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             <Card className="glass-effect border-0 shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-slate-900">
@@ -167,15 +183,15 @@ export default function ProfilePage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                 <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="age">Age</Label>
-                    <Input id="age" type="number" value={formData.age} onChange={(e) => handleInputChange('age', e.target.value)} />
+                    <Input id="age" type="number" value={formData.age} onChange={(e) => handleInputChange("age", e.target.value)} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="gender">Gender</Label>
-                    <Select value={formData.gender} onValueChange={(value) => handleInputChange('gender', value)}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
+                    <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
+                      <SelectTrigger><SelectValue placeholder="Select gender" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="male">Male</SelectItem>
                         <SelectItem value="female">Female</SelectItem>
@@ -188,18 +204,18 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="weight">Weight (kg)</Label>
-                    <Input id="weight" type="number" value={formData.weight} onChange={(e) => handleInputChange('weight', e.target.value)} />
+                    <Input id="weight" type="number" value={formData.weight} onChange={(e) => handleInputChange("weight", e.target.value)} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="height">Height (cm)</Label>
-                    <Input id="height" type="number" value={formData.height} onChange={(e) => handleInputChange('height', e.target.value)} />
+                    <Input id="height" type="number" value={formData.height} onChange={(e) => handleInputChange("height", e.target.value)} />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="activity">Activity Level</Label>
-                   <Select value={formData.activity_level} onValueChange={(value) => handleInputChange('activity_level', value)}>
-                    <SelectTrigger><SelectValue /></SelectTrigger>
+                  <Select value={formData.activity_level} onValueChange={(value) => handleInputChange("activity_level", value)}>
+                    <SelectTrigger><SelectValue placeholder="Select activity level" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="sedentary">Sedentary (desk job, no exercise)</SelectItem>
                       <SelectItem value="lightly_active">Lightly Active (light exercise 1-3x/week)</SelectItem>
@@ -212,8 +228,8 @@ export default function ProfilePage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="goal">Fitness Goal</Label>
-                  <Select value={formData.goal} onValueChange={(value) => handleInputChange('goal', value)}>
-                    <SelectTrigger><SelectValue /></SelectTrigger>
+                  <Select value={formData.goal} onValueChange={(value) => handleInputChange("goal", value)}>
+                    <SelectTrigger><SelectValue placeholder="Select your goal" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="cutting">Cutting (lose weight)</SelectItem>
                       <SelectItem value="maintenance">Maintenance (maintain weight)</SelectItem>
@@ -224,17 +240,17 @@ export default function ProfilePage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="budget">Weekly Food Budget ($)</Label>
-                  <Input id="budget" type="number" value={formData.weekly_budget} onChange={(e) => handleInputChange('weekly_budget', e.target.value)} />
+                  <Input id="budget" type="number" value={formData.weekly_budget} onChange={(e) => handleInputChange("weekly_budget", e.target.value)} />
                 </div>
 
-                <Button 
+                <Button
                   onClick={calculateAndSaveChanges}
                   disabled={isSaving}
                   className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 shadow-lg"
                   size="lg"
                 >
                   <Save className="w-4 h-4 mr-2" />
-                  {isSaving ? 'Saving...' : 'Save Changes'}
+                  {isSaving ? "Saving..." : "Save Changes"}
                 </Button>
               </CardContent>
             </Card>

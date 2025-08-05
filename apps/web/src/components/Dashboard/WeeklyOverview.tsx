@@ -1,25 +1,19 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Calendar, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface DayEntry {
-  day: string;
-  calories: number;
-  cost: number;
-}
+export default function WeeklyOverview() {
+  const weekData = [
+    { day: 'Mon', calories: 1850, cost: 12.50 },
+    { day: 'Tue', calories: 2100, cost: 15.20 },
+    { day: 'Wed', calories: 1950, cost: 11.80 },
+    { day: 'Thu', calories: 2200, cost: 16.40 },
+    { day: 'Fri', calories: 1800, cost: 13.60 },
+    { day: 'Sat', calories: 2300, cost: 18.20 },
+    { day: 'Sun', calories: 0, cost: 0 }
+  ];
 
-interface WeeklyOverviewProps {
-  weekData: DayEntry[];
-  averageCalories: number;
-  averageCost: number;
-}
-
-export default function WeeklyOverview({
-  weekData,
-  averageCalories,
-  averageCost
-}: WeeklyOverviewProps) {
   const maxCalories = Math.max(...weekData.map(d => d.calories));
 
   return (
@@ -67,44 +61,17 @@ export default function WeeklyOverview({
               </motion.div>
             ))}
           </div>
-
+          
           <div className="mt-6 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
             <div className="flex items-center gap-2 text-emerald-700">
               <TrendingUp className="w-4 h-4" />
               <span className="text-sm font-medium">
-                Avg: {averageCalories.toFixed(0)} calories/day • ${averageCost.toFixed(2)}/day
+                Avg: 1,743 calories/day • $12.53/day
               </span>
             </div>
           </div>
         </CardContent>
       </Card>
     </motion.div>
-  );
-}
-
-// 🧪 Example usage – can be removed once wired to real data
-const sampleWeekData: DayEntry[] = [
-  { day: 'Mon', calories: 1850, cost: 12.50 },
-  { day: 'Tue', calories: 2100, cost: 15.20 },
-  { day: 'Wed', calories: 1950, cost: 11.80 },
-  { day: 'Thu', calories: 2200, cost: 16.40 },
-  { day: 'Fri', calories: 1800, cost: 13.60 },
-  { day: 'Sat', calories: 2300, cost: 18.20 },
-  { day: 'Sun', calories: 0, cost: 0 }
-];
-
-export function WeeklyOverviewDemo() {
-  const totalCalories = sampleWeekData.reduce((acc, d) => acc + d.calories, 0);
-  const totalCost = sampleWeekData.reduce((acc, d) => acc + d.cost, 0);
-  const daysWithData = sampleWeekData.filter(d => d.calories > 0).length;
-  const avgCalories = totalCalories / daysWithData;
-  const avgCost = totalCost / daysWithData;
-
-  return (
-    <WeeklyOverview
-      weekData={sampleWeekData}
-      averageCalories={avgCalories}
-      averageCost={avgCost}
-    />
   );
 }

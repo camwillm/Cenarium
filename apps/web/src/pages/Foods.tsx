@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { Food } from "@/entities/Food";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import React, { useState, useEffect, useMemo } from "react";
+import { Food } from "../api/entities";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { Plus, Search } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -9,12 +9,29 @@ import FoodSearch from "../components/foods/FoodSearch";
 import FoodTable from "../components/foods/FoodTable";
 import AddFoodForm from "../components/foods/AddFoodForm";
 
+// Type for a food item (you can extend this based on your data structure)
+export interface FoodItem {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  price: number;
+  serving_size_g: number;
+  nutrition: {
+    calories: number;
+    protein: number;
+    carbs: number;
+    fat: number;
+  };
+  [key: string]: any; // For any other optional fields
+}
+
 export default function FoodsPage() {
-  const [foods, setFoods] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("all");
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [foods, setFoods] = useState<FoodItem[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
 
   useEffect(() => {
     loadFoods();
@@ -23,24 +40,24 @@ export default function FoodsPage() {
   const loadFoods = async () => {
     setIsLoading(true);
     try {
-      const allFoods = await Food.list("-created_date");
+      const allFoods: FoodItem[] = await Food.list("-created_date");
       setFoods(allFoods);
     } catch (error) {
       console.error("Error loading foods:", error);
     }
     setIsLoading(false);
   };
-  
+
   const filteredFoods = useMemo(() => {
-    return foods.filter(food => {
+    return foods.filter((food) => {
       const nameMatch = food.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const categoryMatch = categoryFilter === 'all' || food.category === categoryFilter;
+      const categoryMatch = categoryFilter === "all" || food.category === categoryFilter;
       return nameMatch && categoryMatch;
     });
   }, [foods, searchTerm, categoryFilter]);
 
-  const handleFoodAdded = (newFood) => {
-    setFoods(prev => [newFood, ...prev]);
+  const handleFoodAdded = (newFood: FoodItem) => {
+    setFoods((prev) => [newFood, ...prev]);
     setIsFormOpen(false);
   };
 
@@ -58,7 +75,7 @@ export default function FoodsPage() {
               Analyze and manage your food items and their costs
             </p>
           </div>
-          <Button 
+          <Button
             onClick={() => setIsFormOpen(true)}
             className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 shadow-lg hover-lift"
           >
@@ -81,13 +98,12 @@ export default function FoodsPage() {
             </CardHeader>
             <CardContent>
               <FoodSearch
-                onSearch={setSearchTerm}
-                onFilter={setCategoryFilter}
+                onSearch={(term: string) => setSearchTerm(term)}
+                onFilter={(category: string) => setCategoryFilter(category)}
               />
             </CardContent>
           </Card>
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,7 +112,7 @@ export default function FoodsPage() {
           <FoodTable foods={filteredFoods} isLoading={isLoading} />
         </motion.div>
       </div>
-      
+
       <AddFoodForm
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}

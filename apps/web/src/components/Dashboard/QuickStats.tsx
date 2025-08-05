@@ -1,4 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
+import React from 'react';
+import { Card, CardContent } from "../../components/ui/card";
 import { Target, DollarSign, TrendingUp, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -34,7 +35,7 @@ const statCards = [
 ];
 
 export default function QuickStats({ user, todayTotals, mealsCount }) {
-  const getStatValue = (key: string) => {
+  const getStatValue = (key) => {
     switch (key) {
       case 'calories':
         return Math.round(todayTotals.calories);
@@ -49,7 +50,7 @@ export default function QuickStats({ user, todayTotals, mealsCount }) {
     }
   };
 
-  const getTargetValue = (key: string) => {
+  const getTargetValue = (key) => {
     if (!user) return null;
     switch (key) {
       case 'calories':
@@ -72,13 +73,17 @@ export default function QuickStats({ user, todayTotals, mealsCount }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
         >
-          <Card className="glass-effect border-0 shadow-lg hover:scale-[1.02] transition-transform cursor-pointer group">
+          <Card className="glass-effect border-0 shadow-lg hover-lift group cursor-pointer">
             <CardContent className="p-4 md:p-6">
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`
+                  w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${stat.gradient} 
+                  flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300
+                `}>
                   <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
               </div>
+              
               <div className="space-y-1">
                 <p className="text-xs md:text-sm font-medium text-slate-500 uppercase tracking-wider">
                   {stat.title}

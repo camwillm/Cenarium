@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Food } from "../../entities/Food";
-
+import React, { useState } from 'react';
+import { Food } from "../../api/entities";
 import {
   Dialog,
   DialogContent,
@@ -9,51 +8,16 @@ import {
   DialogDescription,
   DialogFooter,
 } from "../../components/ui/dialog";
-
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
-
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
 import { Save, Utensils } from "lucide-react";
 import { motion } from "framer-motion";
 
-// 🍽 Available Categories
-const categories = [
-  "protein", "carbs", "vegetables", "fruits", "dairy",
-  "grains", "snacks", "beverages", "condiments", "other"
-];
+const categories = ["protein", "carbs", "vegetables", "fruits", "dairy", "grains", "snacks", "beverages", "condiments", "other"];
 
-// 📦 Form State Interface
-interface FoodFormState {
-  name: string;
-  brand: string;
-  category: string;
-  calories_per_100g: string;
-  protein_per_100g: string;
-  carbs_per_100g: string;
-  fat_per_100g: string;
-  fiber_per_100g: string;
-  price_per_unit: string;
-  unit_weight: string;
-  store: string;
-}
-
-// 🔢 Props Interface
-interface AddFoodFormProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onFoodAdded: (food: any) => void;
-}
-
-const initialFormState: FoodFormState = {
+const initialFormState = {
   name: '',
   brand: '',
   category: '',
@@ -67,32 +31,28 @@ const initialFormState: FoodFormState = {
   store: ''
 };
 
-export default function AddFoodForm({ isOpen, onClose, onFoodAdded }: AddFoodFormProps) {
-  const [formData, setFormData] = useState<FoodFormState>(initialFormState);
+export default function AddFoodForm({ isOpen, onClose, onFoodAdded }) {
+  const [formData, setFormData] = useState(initialFormState);
   const [isSaving, setIsSaving] = useState(false);
 
-  const handleInputChange = (field: keyof FoodFormState, value: string) => {
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSaving(true);
-
+    
+    // Convert string inputs to numbers
     const dataToSave = Object.fromEntries(
       Object.entries(formData).map(([key, value]) => {
-        if (
-          [
-            'calories_per_100g', 'protein_per_100g', 'carbs_per_100g',
-            'fat_per_100g', 'fiber_per_100g', 'price_per_unit', 'unit_weight'
-          ].includes(key)
-        ) {
+        if (['calories_per_100g', 'protein_per_100g', 'carbs_per_100g', 'fat_per_100g', 'fiber_per_100g', 'price_per_unit', 'unit_weight'].includes(key)) {
           return [key, parseFloat(value) || 0];
         }
         return [key, value];
       })
     );
-
+    
     try {
       const newFood = await Food.create(dataToSave);
       onFoodAdded(newFood);
@@ -116,15 +76,14 @@ export default function AddFoodForm({ isOpen, onClose, onFoodAdded }: AddFoodFor
             Enter the details for the new food item to add it to your database.
           </DialogDescription>
         </DialogHeader>
-
+        
         <form onSubmit={handleSubmit}>
-          <motion.div
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 py-4"
           >
-            {/* 🥣 Basic Details */}
             <div className="space-y-2">
               <Label htmlFor="name">Food Name</Label>
               <Input id="name" value={formData.name} onChange={(e) => handleInputChange('name', e.target.value)} required />
@@ -136,19 +95,19 @@ export default function AddFoodForm({ isOpen, onClose, onFoodAdded }: AddFoodFor
             <div className="space-y-2 col-span-2">
               <Label htmlFor="category">Category</Label>
               <Select value={formData.category} onValueChange={(value) => handleInputChange('category', value)}>
-                <SelectTrigger><SelectValue placeholder="Select a category" /></SelectTrigger>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
                 <SelectContent>
                   {categories.map(cat => (
-                    <SelectItem key={cat} value={cat} className="capitalize">
-                      {cat}
-                    </SelectItem>
+                    <SelectItem key={cat} value={cat} className="capitalize">{cat}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
 
-            {/* 🔬 Nutrition Section */}
             <h3 className="md:col-span-2 text-lg font-semibold text-slate-800 pt-4 border-t border-slate-200/80">Nutrition (per 100g)</h3>
+            
             <div className="space-y-2">
               <Label htmlFor="calories">Calories</Label>
               <Input id="calories" type="number" value={formData.calories_per_100g} onChange={(e) => handleInputChange('calories_per_100g', e.target.value)} required />
@@ -170,8 +129,8 @@ export default function AddFoodForm({ isOpen, onClose, onFoodAdded }: AddFoodFor
               <Input id="fiber" type="number" value={formData.fiber_per_100g} onChange={(e) => handleInputChange('fiber_per_100g', e.target.value)} />
             </div>
 
-            {/* 💰 Pricing Details */}
             <h3 className="md:col-span-2 text-lg font-semibold text-slate-800 pt-4 border-t border-slate-200/80">Pricing</h3>
+
             <div className="space-y-2">
               <Label htmlFor="price">Price ($)</Label>
               <Input id="price" type="number" step="0.01" value={formData.price_per_unit} onChange={(e) => handleInputChange('price_per_unit', e.target.value)} />
@@ -180,20 +139,15 @@ export default function AddFoodForm({ isOpen, onClose, onFoodAdded }: AddFoodFor
               <Label htmlFor="weight">Unit Weight (g)</Label>
               <Input id="weight" type="number" value={formData.unit_weight} onChange={(e) => handleInputChange('unit_weight', e.target.value)} />
             </div>
-            <div className="space-y-2">
+             <div className="space-y-2">
               <Label htmlFor="store">Store</Label>
               <Input id="store" value={formData.store} onChange={(e) => handleInputChange('store', e.target.value)} />
             </div>
-          </motion.div>
 
-          {/* ✅ Actions */}
+          </motion.div>
           <DialogFooter className="pt-4">
             <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
-            <Button
-              type="submit"
-              disabled={isSaving}
-              className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 shadow-lg"
-            >
+            <Button type="submit" disabled={isSaving} className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 shadow-lg">
               <Save className="w-4 h-4 mr-2" />
               {isSaving ? 'Saving...' : 'Save Food'}
             </Button>
