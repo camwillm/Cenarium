@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "apps/web/src",
+    "baseUrl": "src",
     "paths": {
       "@/*": ["*"],
       "@components/*": ["components/*"],
@@ -11,7 +11,7 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -19,7 +19,11 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["react", "react-dom"]
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "types": ["react", "react-dom", "vite/client"]
   },
-  "include": ["apps/web/src"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

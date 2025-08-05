@@ -19,7 +19,19 @@ const mealTypeEmojis = {
   snack: "🥨"
 };
 
-export default function RecentMeals({ meals }) {
+type Meal = {
+  id: string;
+  meal_type: keyof typeof mealTypeEmojis;
+  created_date?: string;
+  total_calories?: number;
+  total_cost?: number;
+  total_protein?: number;
+  total_carbs?: number;
+  total_fat?: number;
+  efficiency_score?: number;
+};
+
+export default function RecentMeals({ meals }: { meals: Meal[] }) {
   if (meals.length === 0) {
     return (
       <motion.div
@@ -80,24 +92,21 @@ export default function RecentMeals({ meals }) {
                           <h3 className="font-semibold text-slate-900 capitalize">
                             {meal.meal_type}
                           </h3>
-                          <Badge 
-                            variant="secondary" 
+                          <Badge
+                            variant="secondary"
                             className={`${mealTypeColors[meal.meal_type]} text-xs`}
                           >
                             {meal.meal_type}
                           </Badge>
                         </div>
                         <p className="text-xs text-slate-500">
-                          {meal.created_date && !isNaN(new Date(meal.created_date).getTime()) ? (
-  format(new Date(meal.created_date), 'h:mm a')
-) : (
-  "Invalid time"
-)}
-
+                          {meal.created_date && !isNaN(new Date(meal.created_date).getTime())
+                            ? format(new Date(meal.created_date), 'h:mm a')
+                            : "Invalid time"}
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="text-right">
                       <div className="flex items-center gap-4 text-sm">
                         <div className="flex items-center gap-1 text-emerald-600">
@@ -111,12 +120,12 @@ export default function RecentMeals({ meals }) {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-6 text-xs text-slate-500">
                     <span>P: {Math.round(meal.total_protein || 0)}g</span>
                     <span>C: {Math.round(meal.total_carbs || 0)}g</span>
                     <span>F: {Math.round(meal.total_fat || 0)}g</span>
-                    {meal.efficiency_score && (
+                    {meal.efficiency_score !== undefined && (
                       <span className="text-emerald-600 font-medium">
                         Efficiency: {meal.efficiency_score.toFixed(1)}
                       </span>

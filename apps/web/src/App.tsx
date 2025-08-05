@@ -1,7 +1,7 @@
 import Pages from '@/pages'
 import { Toaster } from '@/components/ui/toaster'
 
-function App(): JSX.Element {
+const App = () => {
   return (
     <>
       <Pages />

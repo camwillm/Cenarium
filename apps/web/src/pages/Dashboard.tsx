@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { User } from "../entities/User";
 import { MealPlan } from "../entities/MealPlan";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils/createPageUrl";
+import { createPageUrl } from "@/utils/createPageUrl";
 import { 
   Target, 
   DollarSign, 
@@ -18,21 +18,49 @@ import {
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 
-import QuickStats from "../components/dashboard/QuickStats";
-import NutritionProgress from "../components/dashboard/NutritionProgress";
-import RecentMeals from "../components/dashboard/RecentMeals";
-import WeeklyOverview from "../components/dashboard/WeeklyOverview";
+import QuickStats from "@/components/Dashboard/QuickStats";
+import NutritionProgress from "@/components/Dashboard/NutritionProgress";
+import RecentMeals from "@/components/Dashboard/RecentMeals";
+import WeeklyOverview from "@/components/Dashboard/WeeklyOverview";
+
+// TypeScript Interfaces
+interface User {
+  email?: string;
+  goal?: string;
+  target_calories?: number;
+  target_protein?: number;
+  target_carbs?: number;
+  target_fat?: number;
+}
+
+interface Meal {
+  total_calories?: number;
+  total_protein?: number;
+  total_carbs?: number;
+  total_fat?: number;
+  total_cost?: number;
+  date?: string;
+  created_by?: string;
+}
+
+interface TodayTotals {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  cost: number;
+}
 
 export default function Dashboard() {
-  const [user, setUser] = useState(null);
-  const [todayMeals, setTodayMeals] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [todayMeals, setTodayMeals] = useState<Meal[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     loadData();
   }, []);
 
-  const loadData = async () => {
+  const loadData = async (): Promise<void> => {
     try {
       const userData = await User.me();
       setUser(userData);
@@ -45,11 +73,14 @@ export default function Dashboard() {
       setTodayMeals(meals);
     } catch (error) {
       console.error("Error loading data:", error);
+      setUser(null);
+      setTodayMeals([]);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
-  const todayTotals = todayMeals.reduce((acc, meal) => ({
+  const todayTotals: TodayTotals = todayMeals.reduce((acc, meal) => ({
     calories: acc.calories + (meal.total_calories || 0),
     protein: acc.protein + (meal.total_protein || 0),
     carbs: acc.carbs + (meal.total_carbs || 0),
@@ -112,7 +143,7 @@ export default function Dashboard() {
         <QuickStats 
           user={user}
           todayTotals={todayTotals}
-          mealsCount={todayMeals.length}
+          mealsCount={todayMeals?.length || 0}
         />
 
         {/* Main Content Grid */}
@@ -122,7 +153,7 @@ export default function Dashboard() {
               user={user}
               todayTotals={todayTotals}
             />
-            <RecentMeals meals={todayMeals} />
+            <RecentMeals meals={todayMeals || []} />
           </div>
           
           <div className="space-y-8">

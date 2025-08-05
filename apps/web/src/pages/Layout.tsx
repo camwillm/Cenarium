@@ -27,9 +27,6 @@ import {
   SidebarTrigger
 } from "../components/ui/sidebar";
 
-// ------------------
-// Types
-// ------------------
 interface NavigationItem {
   title: string;
   url: string;
@@ -50,15 +47,6 @@ interface UserData {
   [key: string]: any;
 }
 
-interface MealEntry {
-  total_calories?: number;
-  total_cost?: number;
-  [key: string]: any;
-}
-
-// ------------------
-// Component
-// ------------------
 const navigationItems: NavigationItem[] = [
   {
     title: "Dashboard",
@@ -95,7 +83,7 @@ const navigationItems: NavigationItem[] = [
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const [user, setUser] = useState<UserData | null>(null);
-  const [todayTotals, setTodayTotals] = useState<{ calories: number; cost: number }>({ calories: 0, cost: 0 });
+  const [todayTotals, setTodayTotals] = useState({ calories: 0, cost: 0 });
 
   useEffect(() => {
     const loadLayoutData = async () => {
@@ -104,13 +92,13 @@ export default function Layout({ children }: LayoutProps) {
         setUser(userData);
 
         const today = format(new Date(), "yyyy-MM-dd");
-        const meals: MealEntry[] = await MealPlan.filter({
+        const meals = await MealPlan.filter({
           date: today,
-          created_by: userData.email
+          created_by: userData.email ?? ""
         });
 
         const totals = meals.reduce(
-          (acc, meal) => ({
+          (acc: { calories: number; cost: number }, meal: any) => ({
             calories: acc.calories + (meal.total_calories || 0),
             cost: acc.cost + (meal.total_cost || 0)
           }),
@@ -197,16 +185,14 @@ export default function Layout({ children }: LayoutProps) {
                           className={`group relative overflow-hidden rounded-xl transition-all duration-300 h-12
                             ${isActive
                               ? "bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 shadow-sm"
-                              : "hover:bg-slate-50 text-slate-600 hover:text-slate-900"}
-                          `}
+                              : "hover:bg-slate-50 text-slate-600 hover:text-slate-900"}`}
                         >
                           <Link to={item.url} className="flex items-center gap-4 px-4 py-3">
                             <div
                               className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300
                                 ${isActive
                                   ? `bg-gradient-to-br ${item.gradient} shadow-lg`
-                                  : "bg-slate-100 group-hover:bg-slate-200"}
-                              `}
+                                  : "bg-slate-100 group-hover:bg-slate-200"}`}
                             >
                               <item.icon className={`w-4 h-4 ${isActive ? "text-white" : "text-slate-500"}`} />
                             </div>
@@ -238,8 +224,7 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="flex justify-between text-emerald-700">
                   <span>Budget</span>
                   <span className="font-semibold">
-                    ${todayTotals.cost.toFixed(2)} / $
-                    {user?.weekly_budget ? (user.weekly_budget / 7).toFixed(2) : "..."}
+                    ${todayTotals.cost.toFixed(2)} / ${user?.weekly_budget ? (user.weekly_budget / 7).toFixed(2) : "..."}
                   </span>
                 </div>
               </div>

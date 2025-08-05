@@ -1,10 +1,43 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Progress } from "../../components/ui/progress";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { Target, Zap, Beef, Wheat } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function NutritionProgress({ user, todayTotals }) {
+interface User {
+  target_calories?: number;
+  target_protein?: number;
+  target_carbs?: number;
+  target_fat?: number;
+}
+
+interface TodayTotals {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+}
+
+interface NutritionProgressProps {
+  user?: User;
+  todayTotals: TodayTotals;
+}
+
+export default function NutritionProgress({ user, todayTotals }: NutritionProgressProps) {
+  if (!todayTotals) {
+    return <div>Loading nutrition data...</div>;
+  }
+
+  const getColorClasses = (color: string) => {
+    const colorMap = {
+      emerald: { bg: "bg-emerald-100", text: "text-emerald-600" },
+      blue: { bg: "bg-blue-100", text: "text-blue-600" },
+      amber: { bg: "bg-amber-100", text: "text-amber-600" },
+      purple: { bg: "bg-purple-100", text: "text-purple-600" }
+    };
+    return colorMap[color as keyof typeof colorMap] || colorMap.emerald;
+  };
+
   const macros = [
     {
       name: "Calories",
@@ -40,7 +73,7 @@ export default function NutritionProgress({ user, todayTotals }) {
     }
   ];
 
-  const getProgressColor = (percentage) => {
+  const getProgressColor = (percentage: number): string => {
     if (percentage >= 90) return "bg-emerald-500";
     if (percentage >= 70) return "bg-blue-500";
     if (percentage >= 50) return "bg-amber-500";
@@ -64,6 +97,8 @@ export default function NutritionProgress({ user, todayTotals }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {macros.map((macro, index) => {
               const percentage = Math.min((macro.current / macro.target) * 100, 100);
+              const colorClasses = getColorClasses(macro.color);
+              
               return (
                 <motion.div
                   key={macro.name}
@@ -74,8 +109,8 @@ export default function NutritionProgress({ user, todayTotals }) {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className={`w-8 h-8 rounded-lg bg-${macro.color}-100 flex items-center justify-center`}>
-                        <macro.icon className={`w-4 h-4 text-${macro.color}-600`} />
+                      <div className={`w-8 h-8 rounded-lg ${colorClasses.bg} flex items-center justify-center`}>
+                        <macro.icon className={`w-4 h-4 ${colorClasses.text}`} />
                       </div>
                       <span className="font-semibold text-slate-900">{macro.name}</span>
                     </div>
