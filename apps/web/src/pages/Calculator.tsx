@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { User } from "../api/entities";
+import { User } from "../entities/User";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Calculator as CalcIcon, Target, Zap, TrendingUp, Save } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { createPageUrl } from "../utils";
+import { createPageUrl } from "../utils/createPageUrl";
 
 // Types
 type Gender = "male" | "female" | "other";

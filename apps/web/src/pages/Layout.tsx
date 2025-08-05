@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { createPageUrl } from "../utils";
-import { User } from "../api/entities";
-import { MealPlan } from "../api/entities";
+import { createPageUrl } from "../utils/createPageUrl";
+import { User } from "../entities/User";
+import { MealPlan } from "../entities/MealPlan";
 import { format } from "date-fns";
 import {
   Calculator,
@@ -25,7 +25,7 @@ import {
   SidebarFooter,
   SidebarProvider,
   SidebarTrigger
-} from "@/components/ui/sidebar";
+} from "../components/ui/sidebar";
 
 // ------------------
 // Types

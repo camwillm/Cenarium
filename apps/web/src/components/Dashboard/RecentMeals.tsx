@@ -88,7 +88,12 @@ export default function RecentMeals({ meals }) {
                           </Badge>
                         </div>
                         <p className="text-xs text-slate-500">
-                          {format(new Date(meal.created_date), 'h:mm a')}
+                          {meal.created_date && !isNaN(new Date(meal.created_date).getTime()) ? (
+  format(new Date(meal.created_date), 'h:mm a')
+) : (
+  "Invalid time"
+)}
+
                         </p>
                       </div>
                     </div>

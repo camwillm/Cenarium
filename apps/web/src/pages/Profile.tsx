@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { User } from "../api/entities";
-import { Card, CardContent, CardHeader, CardTitle } from ../components/ui/card";
+import { User } from "../entities/User";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { User as UserIcon, Save, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { createPageUrl } from "../utils";
+import { createPageUrl } from "../utils/createPageUrl";
 import { Toaster, toast } from "sonner";
 
 // Types
